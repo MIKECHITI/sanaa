@@ -1,0 +1,17 @@
+# Local environment files
+/includes/config.php
+/.env
+
+# Logs and runtime files
+*.log
+
+# Uploaded images and user-generated content
+/assets/images/uploads/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# IDE/project settings
+.vscode/
+.idea/

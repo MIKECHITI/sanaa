@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanaa Ya Kenya — Authentic Kenyan Handcrafted Ornaments</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dark: #8B6914;
+    --earth: #2C1810;
+    --earth-mid: #5C3D2E;
+    --earth-light: #8B6355;
+    --cream: #FAF7F2;
+    --cream-dark: #F0EAE0;
+    --white: #FFFFFF;
+    --text-primary: #1A0F0A;
+    --text-secondary: #5C3D2E;
+    --text-muted: #9C7B6E;
+    --border: rgba(201,168,76,0.2);
+    --border-strong: rgba(201,168,76,0.45);
+    --green: #2D5A27;
+    --green-light: #4A8A40;
+    --red: #B03A2E;
+    --shadow: 0 4px 24px rgba(44,24,16,0.08);
+    --shadow-lg: 0 8px 48px rgba(44,24,16,0.14);
+    --radius: 4px;
+    --radius-lg: 8px;
+    --radius-xl: 16px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
+
+  /* PAGES */
+  .page { display: none; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--earth);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; font-weight: 700;
+    color: var(--gold);
+    cursor: pointer; letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-brand .brand-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
+  .nav-links { display: flex; align-items: center; gap: 0.25rem; }
+  .nav-link {
+    color: rgba(255,255,255,0.75); font-size: 0.875rem; font-weight: 400;
+    padding: 0.5rem 0.875rem; border-radius: var(--radius);
+    cursor: pointer; transition: all 0.2s; border: none; background: none;
+    letter-spacing: 0.01em;
+  }
+  .nav-link:hover { color: var(--gold); background: rgba(201,168,76,0.1); }
+  .nav-link.active { color: var(--gold); }
+  .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+  .nav-cart {
+    position: relative; cursor: pointer;
+    color: rgba(255,255,255,0.85); font-size: 0.875rem; font-weight: 500;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(201,168,76,0.4); border-radius: var(--radius);
+    background: rgba(201,168,76,0.08); transition: all 0.2s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .nav-cart:hover { background: rgba(201,168,76,0.18); border-color: var(--gold); color: var(--gold); }
+  .cart-badge {
+    position: absolute; top: -6px; right: -6px;
+    background: var(--gold); color: var(--earth); border-radius: 50%;
+    width: 18px; height: 18px; font-size: 0.65rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .btn-nav-login {
+    background: var(--gold); color: var(--earth); border: none;
+    padding: 0.45rem 1.1rem; border-radius: var(--radius);
+    font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-nav-login:hover { background: var(--gold-dark); color: var(--white); }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 0.75rem 1.75rem; border-radius: var(--radius); border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; transition: all 0.22s; letter-spacing: 0.01em; text-decoration: none;
+  }
+  .btn-primary { background: var(--gold); color: var(--earth); }
+  .btn-primary:hover { background: var(--gold-dark); color: var(--white); transform: translateY(-1px); box-shadow: var(--shadow); }
+  .btn-outline { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+  .btn-outline:hover { background: var(--gold); color: var(--earth); }
+  .btn-dark { background: var(--earth); color: var(--cream); }
+  .btn-dark:hover { background: var(--earth-mid); }
+  .btn-danger { background: var(--red); color: var(--white); }
+  .btn-danger:hover { background: #8B2E25; }
+  .btn-green { background: var(--green); color: var(--white); }
+  .btn-green:hover { background: var(--green-light); }
+  .btn-sm { padding: 0.45rem 1rem; font-size: 0.8rem; }
+  .btn-lg { padding: 0.9rem 2.25rem; font-size: 1rem; }
+  .btn-full { width: 100%; }
+
+  /* SECTIONS */
+  .section { padding: 5rem 2rem; }
+  .section-sm { padding: 3rem 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .container-sm { max-width: 800px; margin: 0 auto; }
+
+  /* TYPOGRAPHY */
+  .display-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 600; line-height: 1.25;
+  }
+  .label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .gold { color: var(--gold); }
+  .muted { color: var(--text-muted); }
+
+  /* TAGS */
+  .tag {
+    display: inline-block; padding: 0.2rem 0.65rem; border-radius: 20px;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+  }
+  .tag-gold { background: rgba(201,168,76,0.15); color: var(--gold-dark); border: 1px solid var(--border); }
+  .tag-earth { background: rgba(44,24,16,0.08); color: var(--earth-mid); border: 1px solid rgba(44,24,16,0.1); }
+  .tag-green { background: rgba(45,90,39,0.1); color: var(--green); border: 1px solid rgba(45,90,39,0.2); }
+
+  /* CARDS */
+  .card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden;
+    transition: all 0.25s; box-shadow: var(--shadow);
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-strong); }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 2rem 0; }
+  .divider-gold { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 1.5rem auto; width: 60px; }
+
+  /* INPUTS */
+  .input, .select, .textarea {
+    width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-strong);
+    border-radius: var(--radius); background: var(--white);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--text-primary);
+    transition: border-color 0.2s; outline: none;
+  }
+  .input:focus, .select:focus, .textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.12); }
+  .input::placeholder { color: var(--text-muted); }
+  .textarea { resize: vertical; min-height: 100px; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.4rem; letter-spacing: 0.02em; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* ALERTS */
+  .alert { padding: 0.875rem 1rem; border-radius: var(--radius); font-size: 0.875rem; margin-bottom: 1rem; }
+  .alert-success { background: rgba(45,90,39,0.1); color: var(--green); border: 1px solid rgba(45,90,39,0.2); }
+  .alert-error { background: rgba(176,58,46,0.1); color: var(--red); border: 1px solid rgba(176,58,46,0.2); }
+  .alert-info { background: rgba(201,168,76,0.1); color: var(--gold-dark); border: 1px solid var(--border); }
+
+  /* BADGE */
+  .badge {
+    display: inline-flex; align-items: center; padding: 0.2rem 0.6rem;
+    border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em;
+  }
+  .badge-gold { background: var(--gold); color: var(--earth); }
+  .badge-green { background: var(--green); color: var(--white); }
+  .badge-red { background: var(--red); color: var(--white); }
+
+  /* FOOTER */
+  footer {
+    background: var(--earth); color: rgba(255,255,255,0.6);
+    padding: 3rem 2rem 1.5rem; margin-top: 4rem;
+  }
+  footer .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; max-width: 1200px; margin: 0 auto 2rem; }
+  footer .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--gold); margin-bottom: 0.75rem; }
+  footer .footer-links { display: flex; flex-direction: column; gap: 0.4rem; }
+  footer .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; cursor: pointer; transition: color 0.2s; }
+  footer .footer-links a:hover { color: var(--gold); }
+  footer h5 { color: rgba(255,255,255,0.85); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
+  footer .footer-bottom { border-top: 1px solid rgba(201,168,76,0.15); padding-top: 1.25rem; text-align: center; font-size: 0.78rem; max-width: 1200px; margin: 0 auto; }
+
+  /* ===================== HOME PAGE ===================== */
+  .hero {
+    background: var(--earth);
+    min-height: 88vh; display: flex; align-items: center;
+    position: relative; overflow: hidden; padding: 4rem 2rem;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.12) 0%, transparent 60%);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-label { color: var(--gold); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px; }
+  .hero-label::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 700; color: var(--white); line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1.5rem; }
+  .hero-title span { color: var(--gold); }
+  .hero-desc { color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.75; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hero-stats { display: flex; gap: 2rem; margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid rgba(201,168,76,0.2); }
+  .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--gold); font-weight: 700; }
+  .hero-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-weight: 400; letter-spacing: 0.04em; }
+  .hero-visual { position: relative; }
+  .hero-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .hero-img-card { border-radius: var(--radius-lg); overflow: hidden; position: relative; }
+  .hero-img-card:first-child { grid-column: span 2; height: 200px; }
+  .hero-img-card:not(:first-child) { height: 130px; }
+  .hero-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; font-size: 2rem; position: relative; overflow: hidden; }
+  .hero-img-placeholder .img-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+  .img-maasai { background: linear-gradient(135deg, #8B1A1A 0%, #C41E3A 50%, #8B1A1A 100%); }
+  .img-soapstone { background: linear-gradient(135deg, #4A7C59 0%, #2D5A27 50%, #4A7C59 100%); }
+  .img-basket { background: linear-gradient(135deg, #8B6914 0%, #C9A84C 50%, #8B6914 100%); }
+  .hero-badge-float {
+    position: absolute; bottom: -10px; right: -10px;
+    background: var(--gold); color: var(--earth); border-radius: var(--radius-lg);
+    padding: 0.6rem 0.9rem; font-size: 0.72rem; font-weight: 700;
+    box-shadow: var(--shadow-lg); text-align: center; letter-spacing: 0.02em;
+  }
+
+  /* FEATURES BAR */
+  .features-bar { background: var(--cream-dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; }
+  .features-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .feature-item { display: flex; align-items: center; gap: 0.75rem; }
+  .feature-icon { width: 36px; height: 36px; background: rgba(201,168,76,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .feature-text { font-size: 0.82rem; }
+  .feature-text strong { display: block; font-weight: 600; color: var(--text-primary); font-size: 0.85rem; }
+  .feature-text span { color: var(--text-muted); }
+
+  /* PRODUCTS GRID */
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+  .product-card { cursor: pointer; }
+  .product-img { width: 100%; height: 220px; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; overflow: hidden; }
+  .product-body { padding: 1.1rem 1.1rem 1.25rem; }
+  .product-artisan { font-size: 0.72rem; font-weight: 600; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.35rem; }
+  .product-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; line-height: 1.3; }
+  .product-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 0.85rem; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--earth); }
+  .product-price span { font-size: 0.72rem; color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-weight: 400; }
+  .add-cart-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); border: none; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; color: var(--earth); }
+  .add-cart-btn:hover { background: var(--gold-dark); transform: scale(1.1); }
+  .product-rating { display: flex; align-items: center; gap: 4px; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .stars { color: var(--gold); letter-spacing: -1px; }
+
+  /* CATEGORIES */
+  .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .category-card { border-radius: var(--radius-lg); padding: 2rem 1.5rem; text-align: center; cursor: pointer; transition: all 0.25s; border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .category-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .cat-maasai { background: linear-gradient(160deg, #FAF0F0 0%, #FDE8E8 100%); }
+  .cat-soapstone { background: linear-gradient(160deg, #F0FAF3 0%, #E8F5EA 100%); }
+  .cat-basket { background: linear-gradient(160deg, #FAF8F0 0%, #F5F0DC 100%); }
+  .category-icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+  .category-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .category-count { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ARTISAN STORY */
+  .artisan-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .artisan-portrait { width: 100%; height: 420px; border-radius: var(--radius-xl); background: linear-gradient(145deg, #5C3D2E 0%, #8B6355 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.75rem; position: relative; overflow: hidden; }
+  .artisan-portrait::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(transparent, rgba(44,24,16,0.6)); }
+  .artisan-portrait-name { position: absolute; bottom: 1.5rem; left: 1.5rem; z-index: 1; }
+  .artisan-portrait-name h4 { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.1rem; }
+  .artisan-portrait-name span { font-size: 0.75rem; color: rgba(255,255,255,0.65); }
+  .artisan-quote { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic; color: var(--text-secondary); line-height: 1.6; margin: 1rem 0 1.5rem; position: relative; padding-left: 1.5rem; border-left: 3px solid var(--gold); }
+
+  /* ===================== PRODUCTS PAGE ===================== */
+  .products-page-header { background: var(--earth); padding: 3rem 2rem; color: var(--white); }
+  .products-layout { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; align-items: start; }
+  .filters-panel { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; position: sticky; top: 80px; }
+  .filter-section { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+  .filter-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .filter-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.875rem; }
+  .filter-options { display: flex; flex-direction: column; gap: 0.5rem; }
+  .filter-option { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; }
+  .filter-option input[type="checkbox"] { accent-color: var(--gold); width: 15px; height: 15px; cursor: pointer; }
+  .filter-option label { font-size: 0.85rem; color: var(--text-secondary); cursor: pointer; }
+  .price-range { display: flex; gap: 0.5rem; }
+  .price-input { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid var(--border-strong); border-radius: var(--radius); font-size: 0.85rem; font-family: 'DM Sans', sans-serif; }
+  .products-header-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+  .sort-select { padding: 0.5rem 0.875rem; border: 1px solid var(--border-strong); border-radius: var(--radius); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; background: var(--white); color: var(--text-primary); cursor: pointer; }
+  .search-bar-wrap { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .search-bar { flex: 1; padding: 0.7rem 1rem 0.7rem 2.5rem; border: 1px solid var(--border-strong); border-radius: var(--radius); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; background: var(--white); outline: none; transition: border-color 0.2s; }
+  .search-bar:focus { border-color: var(--gold); }
+  .search-wrap { position: relative; flex: 1; }
+  .search-icon { position: absolute; left: 0.875rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; }
+
+  /* ===================== PRODUCT DETAIL ===================== */
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+  .detail-gallery { position: sticky; top: 80px; }
+  .detail-main-img { width: 100%; height: 420px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; font-size: 4rem; margin-bottom: 0.875rem; }
+  .detail-thumbnails { display: flex; gap: 0.6rem; }
+  .detail-thumb { width: 72px; height: 72px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
+  .detail-thumb.active { border-color: var(--gold); }
+  .detail-price-block { background: var(--cream-dark); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin: 1.5rem 0; }
+  .detail-price { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--earth); }
+  .detail-price-note { font-size: 0.78rem; color: var(--text-muted); }
+  .detail-actions { display: flex; gap: 0.875rem; flex-wrap: wrap; margin-top: 0.875rem; }
+  .quantity-control { display: flex; align-items: center; border: 1.5px solid var(--border-strong); border-radius: var(--radius); overflow: hidden; }
+  .qty-btn { width: 36px; height: 40px; background: var(--cream-dark); border: none; cursor: pointer; font-size: 1.1rem; color: var(--text-primary); transition: background 0.2s; display: flex; align-items: center; justify-content: center; }
+  .qty-btn:hover { background: var(--border); }
+  .qty-val { width: 44px; text-align: center; font-weight: 600; font-size: 0.9rem; border: none; outline: none; background: var(--white); font-family: 'DM Sans', sans-serif; }
+  .detail-artisan-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-top: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+  .artisan-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--earth-mid), var(--earth-light)); display: flex; align-items: center; justify-content: center; color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; flex-shrink: 0; }
+  .spec-table { width: 100%; border-collapse: collapse; }
+  .spec-table td { padding: 0.6rem 0; font-size: 0.875rem; border-bottom: 1px solid var(--border); }
+  .spec-table td:first-child { color: var(--text-muted); width: 40%; }
+  .spec-table td:last-child { font-weight: 500; color: var(--text-primary); }
+
+  /* ===================== ARTISAN DASHBOARD ===================== */
+  .dashboard-layout { display: grid; grid-template-columns: 220px 1fr; gap: 0; min-height: calc(100vh - 64px); }
+  .sidebar { background: var(--earth); padding: 1.5rem 0; border-right: 1px solid rgba(201,168,76,0.15); }
+  .sidebar-profile { text-align: center; padding: 1rem 1.5rem 1.5rem; border-bottom: 1px solid rgba(201,168,76,0.15); margin-bottom: 0.75rem; }
+  .sidebar-avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--earth-mid), var(--gold-dark)); margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1.4rem; font-family: 'Playfair Display', serif; border: 2px solid rgba(201,168,76,0.3); }
+  .sidebar-name { color: var(--white); font-weight: 600; font-size: 0.9rem; }
+  .sidebar-role { color: rgba(201,168,76,0.7); font-size: 0.72rem; margin-top: 0.15rem; }
+  .sidebar-nav { padding: 0 0.75rem; }
+  .sidebar-item { display: flex; align-items: center; gap: 0.7rem; padding: 0.65rem 0.875rem; border-radius: var(--radius); color: rgba(255,255,255,0.55); font-size: 0.85rem; cursor: pointer; transition: all 0.2s; margin-bottom: 0.15rem; }
+  .sidebar-item:hover, .sidebar-item.active { background: rgba(201,168,76,0.12); color: var(--gold); }
+  .sidebar-item .si-icon { font-size: 1rem; width: 20px; }
+  .sidebar-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.25); padding: 1rem 0.875rem 0.35rem; margin-top: 0.5rem; }
+  .dash-main { background: var(--cream); padding: 2rem; overflow-y: auto; }
+  .dash-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
+  .dash-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+  .stat-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+  .stat-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .stat-value { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--text-primary); line-height: 1; }
+  .stat-change { font-size: 0.75rem; color: var(--green); margin-top: 0.35rem; font-weight: 500; }
+  .stat-change.neg { color: var(--red); }
+  .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+  .dash-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+  .dash-card-title { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; }
+  .orders-table { width: 100%; border-collapse: collapse; }
+  .orders-table th { text-align: left; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+  .orders-table td { padding: 0.7rem 0; font-size: 0.85rem; border-bottom: 1px solid rgba(201,168,76,0.08); }
+  .status-pill { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.03em; }
+  .sp-paid { background: rgba(45,90,39,0.1); color: var(--green); }
+  .sp-pending { background: rgba(201,168,76,0.15); color: var(--gold-dark); }
+  .sp-shipped { background: rgba(29,70,145,0.1); color: #1D4691; }
+  .mini-product { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(201,168,76,0.08); }
+  .mini-product-img { width: 44px; height: 44px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+  .mini-product-name { font-size: 0.85rem; font-weight: 500; color: var(--text-primary); }
+  .mini-product-price { font-size: 0.78rem; color: var(--text-muted); }
+  .mini-product-sales { font-size: 0.75rem; color: var(--green); font-weight: 600; margin-left: auto; }
+
+  /* Upload form */
+  .upload-zone { border: 2px dashed var(--border-strong); border-radius: var(--radius-lg); padding: 2.5rem; text-align: center; cursor: pointer; transition: all 0.2s; }
+  .upload-zone:hover { border-color: var(--gold); background: rgba(201,168,76,0.04); }
+  .upload-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+
+  /* ===================== CART & CHECKOUT ===================== */
+  .cart-layout { display: grid; grid-template-columns: 1fr 360px; gap: 2rem; align-items: start; }
+  .cart-item { display: flex; gap: 1.25rem; padding: 1.25rem; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 0.875rem; }
+  .cart-item-img { width: 90px; height: 90px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; flex-shrink: 0; }
+  .cart-item-body { flex: 1; }
+  .cart-item-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .cart-item-artisan { font-size: 0.75rem; color: var(--gold); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+  .cart-item-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.75rem; }
+  .cart-item-price { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--earth); }
+  .order-summary-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; position: sticky; top: 80px; }
+  .summary-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 1.25rem; }
+  .summary-line { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; font-size: 0.875rem; }
+  .summary-line.total { font-weight: 700; font-size: 1rem; padding-top: 0.875rem; border-top: 1px solid var(--border); }
+  .mpesa-section { background: rgba(45,90,39,0.06); border: 1.5px solid rgba(45,90,39,0.2); border-radius: var(--radius-lg); padding: 1.25rem; margin: 1.25rem 0; }
+  .mpesa-logo { font-size: 1.5rem; font-weight: 900; color: var(--green); font-family: 'Playfair Display', serif; letter-spacing: -0.02em; }
+  .mpesa-sub { font-size: 0.75rem; color: var(--text-muted); }
+  .checkout-steps { display: flex; align-items: center; gap: 0; margin-bottom: 2rem; }
+  .step-item { display: flex; align-items: center; flex: 1; }
+  .step-circle { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+  .step-circle.done { background: var(--green); color: var(--white); }
+  .step-circle.active { background: var(--gold); color: var(--earth); }
+  .step-circle.pending { background: var(--cream-dark); color: var(--text-muted); border: 1.5px solid var(--border-strong); }
+  .step-label { font-size: 0.72rem; font-weight: 600; margin-top: 0.2rem; }
+  .step-line { flex: 1; height: 2px; background: var(--border); margin: 0 0.5rem; }
+  .step-line.done { background: var(--green); }
+  .step-block { display: flex; flex-direction: column; align-items: center; }
+  .payment-success { text-align: center; padding: 3rem 2rem; }
+  .success-icon { width: 80px; height: 80px; background: rgba(45,90,39,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 1.5rem; }
+
+  /* MPESA ANIMATION */
+  .mpesa-prompt { background: var(--white); border: 2px solid var(--green); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; }
+  .mpesa-spinner { width: 40px; height: 40px; border: 3px solid rgba(45,90,39,0.15); border-top: 3px solid var(--green); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Notification */
+  .notification { position: fixed; top: 80px; right: 1.5rem; z-index: 999; background: var(--earth); color: var(--white); padding: 0.875rem 1.25rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); border-left: 4px solid var(--gold); font-size: 0.875rem; font-weight: 500; transform: translateX(120%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); max-width: 300px; }
+  .notification.show { transform: translateX(0); }
+
+  /* Responsive basics */
+  @media (max-width: 900px) {
+    .hero-grid, .artisan-feature, .detail-grid, .products-layout, .cart-layout, .footer-grid { grid-template-columns: 1fr; }
+    .categories-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .dash-grid { grid-template-columns: 1fr; }
+    .dashboard-layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NOTIFICATION -->
+<div class="notification" id="notification"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand" onclick="showPage('home')">
+    <span class="brand-dot"></span>
+    Sanaa Ya Kenya
+  </div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showPage('home'); setActive(this)">Home</button>
+    <button class="nav-link" onclick="showPage('products'); setActive(this)">Shop</button>
+    <button class="nav-link" onclick="showPage('artisans')">Artisans</button>
+    <button class="nav-link" onclick="showPage('about')">About</button>
+  </div>
+  <div class="nav-actions">
+    <div class="nav-cart" onclick="showPage('cart')">
+      🛒 Cart
+      <span class="cart-badge" id="cartBadge">0</span>
+    </div>
+    <button class="btn-nav-login" onclick="showPage('dashboard')">Artisan Login</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HOME PAGE ═══════════════════ -->
+<div class="page active" id="page-home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-label">Kenya's Premier Artisan Marketplace</div>
+        <h1 class="hero-title">
+          Authentic Craft.<br>
+          <span>Direct from</span><br>
+          the Artisan.
+        </h1>
+        <p class="hero-desc">
+          Discover handcrafted ornaments made by skilled Kenyan artisans — Maasai beaded jewellery, Kisii soapstone carvings, and coastal sisal baskets. Every purchase goes directly to the maker.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" onclick="showPage('products')">Explore Collection</button>
+          <button class="btn btn-outline btn-lg">Watch Stories ▶</button>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">247+</div>
+            <div class="hero-stat-label">Artisans</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">1,800+</div>
+            <div class="hero-stat-label">Products</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">94%</div>
+            <div class="hero-stat-label">Revenue to Artisans</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-grid">
+          <div class="hero-img-card">
+            <div class="hero-img-placeholder img-maasai">
+              💎
+              <div class="img-label">Maasai Beadwork</div>
+            </div>
+          </div>
+          <div class="hero-img-card">
+            <div class="hero-img-placeholder img-soapstone">
+              🗿
+              <div class="img-label">Soapstone Carvings</div>
+            </div>
+          </div>
+          <div class="hero-img-card" style="position:relative;">
+            <div class="hero-img-placeholder img-basket">
+              🧺
+              <div class="img-label">Sisal Baskets</div>
+            </div>
+            <div class="hero-badge-float">M-Pesa<br>Payments<br>✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES BAR -->
+  <div class="features-bar">
+    <div class="features-bar-inner">
+      <div class="feature-item">
+        <div class="feature-icon">📱</div>
+        <div class="feature-text"><strong>M-Pesa Payments</strong><span>Instant & secure</span></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🤝</div>
+        <div class="feature-text"><strong>Direct from Artisan</strong><span>No middlemen</span></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">✅</div>
+        <div class="feature-text"><strong>Authenticity Verified</strong><span>Certified handmade</span></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🚚</div>
+        <div class="feature-text"><strong>Nationwide Delivery</strong><span>3–7 business days</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="section" style="background:var(--white);">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:3rem;">
+        <div class="label">Browse by Tradition</div>
+        <div class="divider-gold"></div>
+        <h2 class="section-title" style="margin-top:0.75rem;">Three Cultural Legacies</h2>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card cat-maasai" onclick="filterByCategory('Maasai'); showPage('products');">
+          <span class="category-icon">💎</span>
+          <div class="category-name" style="color:#8B1A1A;">Maasai Beadwork</div>
+          <div class="category-count">Narok County · 340 pieces</div>
+          <div style="margin-top:1rem;"><span class="tag-earth tag">Jewellery</span> <span class="tag-earth tag">Bracelets</span></div>
+        </div>
+        <div class="category-card cat-soapstone" onclick="filterByCategory('Soapstone'); showPage('products');">
+          <span class="category-icon">🗿</span>
+          <div class="category-name" style="color:#2D5A27;">Kisii Soapstone</div>
+          <div class="category-count">Kisii County · 215 pieces</div>
+          <div style="margin-top:1rem;"><span class="tag-earth tag">Carvings</span> <span class="tag-earth tag">Sculptures</span></div>
+        </div>
+        <div class="category-card cat-basket" onclick="filterByCategory('Sisal'); showPage('products');">
+          <span class="category-icon">🧺</span>
+          <div class="category-name" style="color:#8B6914;">Coastal Basketry</div>
+          <div class="category-count">Kwale County · 180 pieces</div>
+          <div style="margin-top:1rem;"><span class="tag-earth tag">Baskets</span> <span class="tag-earth tag">Weavings</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="section">
+    <div class="container">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;">
+        <div>
+          <div class="label">Handpicked for You</div>
+          <div class="divider-gold" style="margin:0.6rem 0;"></div>
+          <h2 class="section-title">Featured Pieces</h2>
+        </div>
+        <button class="btn btn-outline" onclick="showPage('products')">View All →</button>
+      </div>
+      <div class="products-grid" id="featuredGrid"></div>
+    </div>
+  </section>
+
+  <!-- ARTISAN STORY -->
+  <section class="section" style="background:var(--cream-dark);">
+    <div class="container">
+      <div class="artisan-feature">
+        <div class="artisan-portrait">
+          <span style="font-size:4rem;">👩🏿‍🎨</span>
+          <div class="artisan-portrait-name">
+            <h4>Mama Akinyi</h4>
+            <span>Kisii County · 24 yrs experience</span>
+          </div>
+        </div>
+        <div>
+          <div class="label">Artisan Story</div>
+          <div class="divider-gold" style="margin:0.75rem 0;"></div>
+          <h2 class="section-title">The Hands Behind Every Piece</h2>
+          <blockquote class="artisan-quote">
+            "Every carving I make carries the spirit of my ancestors. When you hold my soapstone lion, you hold the story of Kisii."
+          </blockquote>
+          <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">
+            Mama Akinyi has been carving Kisii soapstone for over two decades, passing down techniques taught by her grandmother. Through this platform, she now reaches buyers across Kenya and beyond — earning 5× more than through local curio markets.
+          </p>
+          <div style="display:flex;gap:2rem;margin-bottom:2rem;">
+            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold);font-weight:700;">Ksh 42K</div><div style="font-size:0.78rem;color:var(--text-muted);">Monthly income</div></div>
+            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold);font-weight:700;">143</div><div style="font-size:0.78rem;color:var(--text-muted);">Pieces sold</div></div>
+            <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold);font-weight:700;">⭐ 4.9</div><div style="font-size:0.78rem;color:var(--text-muted);">Rating</div></div>
+          </div>
+          <button class="btn btn-primary" onclick="showPage('products')">Browse Her Collection</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section style="background:var(--earth);padding:4rem 2rem;text-align:center;">
+    <div class="container-sm">
+      <div class="label" style="margin-bottom:0.75rem;">Join the Movement</div>
+      <h2 class="section-title" style="color:var(--white);margin-bottom:1rem;">Are You a Kenyan Artisan?</h2>
+      <p style="color:rgba(255,255,255,0.6);margin-bottom:2rem;font-size:1.05rem;">List your work, tell your story, and receive payments directly via M-Pesa. No fees. No middlemen.</p>
+      <button class="btn btn-primary btn-lg" onclick="showPage('dashboard')">Register as Artisan</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Sanaa Ya Kenya</div>
+        <p style="font-size:0.85rem;line-height:1.7;max-width:280px;">Connecting Kenya's talented artisans with the world, one handcrafted piece at a time.</p>
+      </div>
+      <div>
+        <h5>Shop</h5>
+        <div class="footer-links">
+          <a onclick="showPage('products')">All Products</a>
+          <a onclick="filterByCategory('Maasai');showPage('products')">Maasai Beadwork</a>
+          <a onclick="filterByCategory('Soapstone');showPage('products')">Soapstone Carvings</a>
+          <a onclick="filterByCategory('Sisal');showPage('products')">Sisal Baskets</a>
+        </div>
+      </div>
+      <div>
+        <h5>Artisans</h5>
+        <div class="footer-links">
+          <a onclick="showPage('dashboard')">Join Platform</a>
+          <a>How It Works</a>
+          <a>M-Pesa Payouts</a>
+          <a>Training Resources</a>
+        </div>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <div class="footer-links">
+          <a>About Us</a>
+          <a>Contact</a>
+          <a>Privacy Policy</a>
+          <a>Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Sanaa Ya Kenya · Built at Maseno University · Powered by M-Pesa</div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ PRODUCTS PAGE ═══════════════════ -->
+<div class="page" id="page-products">
+  <div class="products-page-header">
+    <div class="container">
+      <div class="label" style="color:var(--gold-light);">Artisan Marketplace</div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--white);margin-top:0.5rem;">All Products</h1>
+      <p style="color:rgba(255,255,255,0.55);margin-top:0.5rem;">Authentic, handcrafted, direct from the maker.</p>
+    </div>
+  </div>
+  <section class="section-sm">
+    <div class="container">
+      <div class="products-layout">
+        <!-- Filters -->
+        <div class="filters-panel">
+          <div style="font-weight:700;font-size:0.95rem;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;">
+            Filters
+            <button class="btn btn-sm" style="padding:0.3rem 0.7rem;font-size:0.72rem;border:1px solid var(--border);background:none;cursor:pointer;border-radius:var(--radius);color:var(--text-muted);" onclick="clearFilters()">Clear all</button>
+          </div>
+          <div class="filter-section">
+            <div class="filter-title">Category</div>
+            <div class="filter-options">
+              <label class="filter-option"><input type="checkbox" id="f-maasai" onchange="applyFilters()"> <label for="f-maasai">Maasai Beadwork</label></label>
+              <label class="filter-option"><input type="checkbox" id="f-soapstone" onchange="applyFilters()"> <label for="f-soapstone">Soapstone Carvings</label></label>
+              <label class="filter-option"><input type="checkbox" id="f-sisal" onchange="applyFilters()"> <label for="f-sisal">Sisal Baskets</label></label>
+            </div>
+          </div>
+          <div class="filter-section">
+            <div class="filter-title">Price Range (KES)</div>
+            <div class="price-range">
+              <input type="number" class="price-input" placeholder="Min" id="priceMin" oninput="applyFilters()">
+              <input type="number" class="price-input" placeholder="Max" id="priceMax" oninput="applyFilters()">
+            </div>
+          </div>
+          <div class="filter-section">
+            <div class="filter-title">Region</div>
+            <div class="filter-options">
+              <label class="filter-option"><input type="checkbox" id="f-narok" onchange="applyFilters()"> <label for="f-narok">Narok County</label></label>
+              <label class="filter-option"><input type="checkbox" id="f-kisii" onchange="applyFilters()"> <label for="f-kisii">Kisii County</label></label>
+              <label class="filter-option"><input type="checkbox" id="f-kwale" onchange="applyFilters()"> <label for="f-kwale">Kwale County</label></label>
+            </div>
+          </div>
+          <div class="filter-section">
+            <div class="filter-title">Rating</div>
+            <div class="filter-options">
+              <label class="filter-option"><input type="radio" name="rating" value="4" onchange="applyFilters()"> <label>⭐ 4+ Stars</label></label>
+              <label class="filter-option"><input type="radio" name="rating" value="3" onchange="applyFilters()"> <label>⭐ 3+ Stars</label></label>
+              <label class="filter-option"><input type="radio" name="rating" value="0" onchange="applyFilters()"> <label>All Ratings</label></label>
+            </div>
+          </div>
+        </div>
+        <!-- Main Products -->
+        <div>
+          <div class="search-bar-wrap">
+            <div class="search-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" class="search-bar" placeholder="Search ornaments, artisans, materials..." id="searchInput" oninput="applyFilters()">
+            </div>
+          </div>
+          <div class="products-header-bar">
+            <span style="font-size:0.85rem;color:var(--text-muted);" id="resultsCount"></span>
+            <select class="sort-select" onchange="applyFilters()" id="sortSelect">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Top Rated</option>
+              <option value="newest">Newest</option>
+            </select>
+          </div>
+          <div class="products-grid" id="productsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════ PRODUCT DETAIL PAGE ═══════════════════ -->
+<div class="page" id="page-detail">
+  <section class="section">
+    <div class="container">
+      <div style="margin-bottom:1.5rem;">
+        <button class="btn btn-sm" style="background:none;border:1px solid var(--border);color:var(--text-muted);cursor:pointer;border-radius:var(--radius);" onclick="showPage('products')">← Back to Shop</button>
+      </div>
+      <div class="detail-grid" id="detailContent"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════ ARTISAN DASHBOARD ═══════════════════ -->
+<div class="page" id="page-dashboard">
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar">MK</div>
+        <div class="sidebar-name">Mama Kerubo</div>
+        <div class="sidebar-role">Artisan · Kisii County</div>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-label">Main</div>
+        <div class="sidebar-item active" onclick="showDashTab('overview',this)"><span class="si-icon">📊</span> Overview</div>
+        <div class="sidebar-item" onclick="showDashTab('products-dash',this)"><span class="si-icon">🛍️</span> My Products</div>
+        <div class="sidebar-item" onclick="showDashTab('orders-dash',this)"><span class="si-icon">📦</span> Orders</div>
+        <div class="sidebar-item" onclick="showDashTab('earnings',this)"><span class="si-icon">💰</span> Earnings</div>
+        <div class="sidebar-label">Settings</div>
+        <div class="sidebar-item" onclick="showDashTab('upload',this)"><span class="si-icon">➕</span> Upload Product</div>
+        <div class="sidebar-item" onclick="showDashTab('profile-dash',this)"><span class="si-icon">👤</span> My Profile</div>
+        <div class="sidebar-item" style="margin-top:1rem;" onclick="showPage('home')"><span class="si-icon">🏠</span> Back to Store</div>
+      </div>
+    </div>
+    <!-- Main -->
+    <div class="dash-main">
+      <!-- OVERVIEW TAB -->
+      <div id="tab-overview">
+        <div class="dash-topbar">
+          <div>
+            <div class="label">Good morning</div>
+            <div class="dash-title">Mama Kerubo's Dashboard</div>
+          </div>
+          <button class="btn btn-primary" onclick="showDashTab('upload',null)">+ Upload Product</button>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total Revenue</div>
+            <div class="stat-value">Ksh 48,250</div>
+            <div class="stat-change">↑ 23% this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Products Listed</div>
+            <div class="stat-value">18</div>
+            <div class="stat-change">3 pending approval</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Orders Received</div>
+            <div class="stat-value">64</div>
+            <div class="stat-change">↑ 8 this week</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Avg. Rating</div>
+            <div class="stat-value">4.9 ⭐</div>
+            <div class="stat-change">From 47 reviews</div>
+          </div>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-card">
+            <div class="dash-card-title">Recent Orders <span class="badge badge-gold">8 new</span></div>
+            <table class="orders-table">
+              <tr><th>Order</th><th>Product</th><th>Amount</th><th>Status</th></tr>
+              <tr><td>#2048</td><td>Lion Carving</td><td>Ksh 3,200</td><td><span class="status-pill sp-paid">Paid</span></td></tr>
+              <tr><td>#2047</td><td>Beaded Necklace</td><td>Ksh 1,800</td><td><span class="status-pill sp-shipped">Shipped</span></td></tr>
+              <tr><td>#2046</td><td>Sisal Bag</td><td>Ksh 2,400</td><td><span class="status-pill sp-paid">Paid</span></td></tr>
+              <tr><td>#2045</td><td>Elephant Carving</td><td>Ksh 4,500</td><td><span class="status-pill sp-pending">Pending</span></td></tr>
+              <tr><td>#2044</td><td>Bracelet Set</td><td>Ksh 950</td><td><span class="status-pill sp-shipped">Shipped</span></td></tr>
+            </table>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-title">Top Selling Products</div>
+            <div class="mini-product"><div class="mini-product-img" style="background:#E8F5EA;">🗿</div><div><div class="mini-product-name">Soapstone Lion Carving</div><div class="mini-product-price">Ksh 3,200</div></div><div class="mini-product-sales">24 sold</div></div>
+            <div class="mini-product"><div class="mini-product-img" style="background:#FDE8E8;">💎</div><div><div class="mini-product-name">Maasai Necklace Set</div><div class="mini-product-price">Ksh 1,800</div></div><div class="mini-product-sales">19 sold</div></div>
+            <div class="mini-product"><div class="mini-product-img" style="background:#F5F0DC;">🧺</div><div><div class="mini-product-name">Kiondo Sisal Basket</div><div class="mini-product-price">Ksh 2,400</div></div><div class="mini-product-sales">12 sold</div></div>
+            <div class="mini-product"><div class="mini-product-img" style="background:#E8F5EA;">🐘</div><div><div class="mini-product-name">Elephant Sculpture</div><div class="mini-product-price">Ksh 4,500</div></div><div class="mini-product-sales">9 sold</div></div>
+          </div>
+        </div>
+        <div class="dash-card" style="margin-top:0;">
+          <div class="dash-card-title">M-Pesa Payment Activity</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:0.5rem;">
+            <div style="background:rgba(45,90,39,0.06);border:1px solid rgba(45,90,39,0.15);border-radius:var(--radius-lg);padding:1rem;text-align:center;">
+              <div style="font-size:1.6rem;font-weight:700;color:var(--green);">Ksh 48,250</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">Total Received</div>
+            </div>
+            <div style="background:rgba(201,168,76,0.08);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem;text-align:center;">
+              <div style="font-size:1.6rem;font-weight:700;color:var(--gold-dark);">Ksh 4,200</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">This Week</div>
+            </div>
+            <div style="background:rgba(44,24,16,0.04);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem;text-align:center;">
+              <div style="font-size:1.6rem;font-weight:700;color:var(--earth-mid);">2.5%</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">Platform Fee</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UPLOAD PRODUCT TAB -->
+      <div id="tab-upload" style="display:none;">
+        <div class="dash-topbar">
+          <div class="dash-title">Upload New Product</div>
+        </div>
+        <div style="max-width:680px;">
+          <div class="dash-card">
+            <div style="margin-bottom:1.5rem;">
+              <div class="label" style="margin-bottom:0.3rem;">Product Images</div>
+              <div class="upload-zone" onclick="notify('Image upload: feature in full backend version')">
+                <span class="upload-icon">📸</span>
+                <div style="font-weight:600;margin-bottom:0.3rem;">Click to upload images</div>
+                <div style="font-size:0.8rem;color:var(--text-muted);">PNG, JPG up to 5MB · At least 1 image required</div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Product Title *</label>
+                <input type="text" class="input" placeholder="e.g. Handcrafted Soapstone Lion" id="up-title">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Category *</label>
+                <select class="select" id="up-cat">
+                  <option value="">Select category</option>
+                  <option>Maasai Beadwork</option>
+                  <option>Soapstone Carvings</option>
+                  <option>Sisal Baskets</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Product Description *</label>
+              <textarea class="textarea" placeholder="Describe your product, its size, weight, and what makes it special..." id="up-desc"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Cultural Story</label>
+              <textarea class="textarea" placeholder="Share the cultural significance, traditional techniques, or the story behind this piece..." style="min-height:80px;" id="up-story"></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Price (KES) *</label>
+                <input type="number" class="input" placeholder="e.g. 2500" id="up-price">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Stock Quantity *</label>
+                <input type="number" class="input" placeholder="e.g. 10" id="up-stock">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Material</label>
+                <input type="text" class="input" placeholder="e.g. Kisii soapstone" id="up-material">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Region</label>
+                <select class="select" id="up-region">
+                  <option value="">Select region</option>
+                  <option>Narok County</option>
+                  <option>Kisii County</option>
+                  <option>Kwale County</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div style="margin-top:0.5rem;padding:1rem;background:rgba(201,168,76,0.08);border:1px solid var(--border);border-radius:var(--radius);font-size:0.82rem;color:var(--text-secondary);">
+              ℹ️ Your product will be reviewed by our admin team within 24 hours before it appears in the shop.
+            </div>
+            <div style="display:flex;gap:1rem;margin-top:1.5rem;">
+              <button class="btn btn-primary btn-full" onclick="submitProduct()">Submit for Review</button>
+              <button class="btn btn-full" style="background:none;border:1px solid var(--border);color:var(--text-muted);cursor:pointer;border-radius:var(--radius);" onclick="showDashTab('overview',null)">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTS TAB -->
+      <div id="tab-products-dash" style="display:none;">
+        <div class="dash-topbar">
+          <div class="dash-title">My Products</div>
+          <button class="btn btn-primary" onclick="showDashTab('upload',null)">+ Upload New</button>
+        </div>
+        <div class="dash-card">
+          <table class="orders-table" style="width:100%;">
+            <tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th>Sales</th></tr>
+            <tr><td><strong>Soapstone Lion</strong></td><td>Soapstone</td><td>Ksh 3,200</td><td>5</td><td><span class="status-pill sp-paid">Live</span></td><td>24</td></tr>
+            <tr><td><strong>Maasai Necklace Set</strong></td><td>Beadwork</td><td>Ksh 1,800</td><td>12</td><td><span class="status-pill sp-paid">Live</span></td><td>19</td></tr>
+            <tr><td><strong>Kiondo Basket</strong></td><td>Sisal</td><td>Ksh 2,400</td><td>8</td><td><span class="status-pill sp-paid">Live</span></td><td>12</td></tr>
+            <tr><td><strong>Elephant Sculpture</strong></td><td>Soapstone</td><td>Ksh 4,500</td><td>3</td><td><span class="status-pill sp-pending">Pending</span></td><td>—</td></tr>
+            <tr><td><strong>Beaded Bracelet Set</strong></td><td>Beadwork</td><td>Ksh 950</td><td>20</td><td><span class="status-pill sp-paid">Live</span></td><td>9</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ORDERS TAB -->
+      <div id="tab-orders-dash" style="display:none;">
+        <div class="dash-topbar"><div class="dash-title">Orders</div></div>
+        <div class="dash-card">
+          <table class="orders-table" style="width:100%;">
+            <tr><th>Order ID</th><th>Customer</th><th>Product</th><th>Amount</th><th>Date</th><th>Status</th></tr>
+            <tr><td>#2048</td><td>J. Kariuki</td><td>Soapstone Lion</td><td>Ksh 3,200</td><td>Mar 25, 2026</td><td><span class="status-pill sp-paid">Paid</span></td></tr>
+            <tr><td>#2047</td><td>A. Wanjiku</td><td>Maasai Necklace</td><td>Ksh 1,800</td><td>Mar 24, 2026</td><td><span class="status-pill sp-shipped">Shipped</span></td></tr>
+            <tr><td>#2046</td><td>M. Odhiambo</td><td>Kiondo Basket</td><td>Ksh 2,400</td><td>Mar 23, 2026</td><td><span class="status-pill sp-paid">Paid</span></td></tr>
+            <tr><td>#2045</td><td>F. Kamau</td><td>Elephant Carving</td><td>Ksh 4,500</td><td>Mar 22, 2026</td><td><span class="status-pill sp-pending">Pending</span></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- EARNINGS TAB -->
+      <div id="tab-earnings" style="display:none;">
+        <div class="dash-topbar"><div class="dash-title">Earnings & M-Pesa</div></div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-label">Total Earned</div><div class="stat-value">Ksh 48,250</div><div class="stat-change">↑ 23% vs last month</div></div>
+          <div class="stat-card"><div class="stat-label">This Month</div><div class="stat-value">Ksh 12,800</div><div class="stat-change">↑ 8 orders</div></div>
+          <div class="stat-card"><div class="stat-label">Withdrawn</div><div class="stat-value">Ksh 35,000</div><div class="stat-change">via M-Pesa</div></div>
+          <div class="stat-card"><div class="stat-label">Available Balance</div><div class="stat-value">Ksh 13,250</div><div class="stat-change">Ready to withdraw</div></div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-title">Withdraw to M-Pesa</div>
+          <div style="max-width:400px;">
+            <div class="form-group"><label class="form-label">M-Pesa Number</label><input type="tel" class="input" value="0712 345 678" placeholder="07xx xxx xxx"></div>
+            <div class="form-group"><label class="form-label">Amount (KES)</label><input type="number" class="input" placeholder="e.g. 5000"></div>
+            <div class="alert alert-info">Available balance: <strong>Ksh 13,250</strong>. Minimum withdrawal: Ksh 500.</div>
+            <button class="btn btn-green btn-full" onclick="notify('Withdrawal initiated! You will receive an M-Pesa prompt shortly.')">Withdraw via M-Pesa</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFILE TAB -->
+      <div id="tab-profile-dash" style="display:none;">
+        <div class="dash-topbar"><div class="dash-title">My Profile</div></div>
+        <div style="max-width:600px;">
+          <div class="dash-card">
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">First Name</label><input type="text" class="input" value="Mama Kerubo"></div>
+              <div class="form-group"><label class="form-label">County</label><select class="select"><option selected>Kisii County</option><option>Narok County</option><option>Kwale County</option></select></div>
+            </div>
+            <div class="form-group"><label class="form-label">Bio / Artisan Story</label><textarea class="textarea">I have been carving soapstone for over 20 years, learning from my mother and grandmother. Every piece I make carries a piece of Kisii culture.</textarea></div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Phone (M-Pesa)</label><input type="tel" class="input" value="0712 345 678"></div>
+              <div class="form-group"><label class="form-label">Email</label><input type="email" class="input" value="kerubo@example.com"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Craft Speciality</label><input type="text" class="input" value="Soapstone Carvings, Animal Sculptures"></div>
+            <button class="btn btn-primary" onclick="notify('Profile updated successfully!')">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CART PAGE ═══════════════════ -->
+<div class="page" id="page-cart">
+  <section class="section">
+    <div class="container">
+      <div style="margin-bottom:2rem;">
+        <div class="label">Your Selection</div>
+        <h1 class="section-title" style="margin-top:0.4rem;">Shopping Cart</h1>
+      </div>
+      <!-- Checkout Steps -->
+      <div class="checkout-steps" style="max-width:420px;margin-bottom:2.5rem;">
+        <div class="step-block"><div class="step-circle active" id="st1">1</div><div class="step-label">Cart</div></div>
+        <div class="step-line" id="sl1"></div>
+        <div class="step-block"><div class="step-circle pending" id="st2">2</div><div class="step-label">Details</div></div>
+        <div class="step-line" id="sl2"></div>
+        <div class="step-block"><div class="step-circle pending" id="st3">3</div><div class="step-label">Payment</div></div>
+        <div class="step-line" id="sl3"></div>
+        <div class="step-block"><div class="step-circle pending" id="st4">✓</div><div class="step-label">Done</div></div>
+      </div>
+
+      <!-- Step 1: Cart -->
+      <div id="cartStep1">
+        <div id="cartEmptyMsg" style="display:none;text-align:center;padding:4rem 2rem;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);">
+          <div style="font-size:3rem;margin-bottom:1rem;">🛒</div>
+          <h3 style="font-family:'Playfair Display',serif;margin-bottom:0.5rem;">Your cart is empty</h3>
+          <p style="color:var(--text-muted);margin-bottom:1.5rem;">Discover authentic Kenyan ornaments</p>
+          <button class="btn btn-primary" onclick="showPage('products')">Browse Products</button>
+        </div>
+        <div id="cartContent">
+          <div class="cart-layout">
+            <div id="cartItemsList"></div>
+            <div id="orderSummaryWrap"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Details -->
+      <div id="cartStep2" style="display:none;">
+        <div class="cart-layout">
+          <div class="dash-card">
+            <h3 style="font-family:'Playfair Display',serif;margin-bottom:1.5rem;">Delivery Details</h3>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="input" placeholder="Your name" id="del-name"></div>
+              <div class="form-group"><label class="form-label">Phone (M-Pesa)</label><input type="tel" class="input" placeholder="07xx xxx xxx" id="del-phone"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Delivery Address</label><input type="text" class="input" placeholder="Street address, city" id="del-addr"></div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">County</label><select class="select"><option>Nairobi</option><option>Kisumu</option><option>Mombasa</option><option>Nakuru</option><option>Other</option></select></div>
+              <div class="form-group"><label class="form-label">Postal Code</label><input type="text" class="input" placeholder="e.g. 00100"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Order Notes (optional)</label><textarea class="textarea" style="min-height:70px;" placeholder="Special instructions for delivery..."></textarea></div>
+            <div style="display:flex;gap:1rem;">
+              <button class="btn btn-outline" onclick="goToStep(1)">← Back</button>
+              <button class="btn btn-primary" onclick="goToStep(3)">Continue to Payment →</button>
+            </div>
+          </div>
+          <div id="orderSummaryWrap2"></div>
+        </div>
+      </div>
+
+      <!-- Step 3: M-Pesa Payment -->
+      <div id="cartStep3" style="display:none;">
+        <div class="cart-layout">
+          <div class="dash-card">
+            <h3 style="font-family:'Playfair Display',serif;margin-bottom:0.5rem;">Pay with M-Pesa</h3>
+            <p style="color:var(--text-muted);font-size:0.875rem;margin-bottom:1.5rem;">Secure, instant payment via Safaricom M-Pesa STK Push</p>
+            <div class="mpesa-section">
+              <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+                <div class="mpesa-logo">M-PESA</div>
+                <div class="mpesa-sub">Safaricom · Daraja API · STK Push</div>
+              </div>
+              <div class="form-group" style="margin-bottom:0.75rem;"><label class="form-label">M-Pesa Number</label><input type="tel" class="input" placeholder="07xx xxx xxx" id="mpesa-phone" value="0712 345 678"></div>
+              <div style="font-size:0.78rem;color:var(--text-muted);">A payment prompt will be sent to this number. Enter your M-Pesa PIN to confirm.</div>
+            </div>
+            <div id="mpesaPromptArea" style="display:none;" class="mpesa-prompt">
+              <div class="mpesa-spinner"></div>
+              <div style="font-weight:600;color:var(--green);margin-bottom:0.3rem;">M-Pesa Prompt Sent!</div>
+              <div style="font-size:0.82rem;color:var(--text-muted);">Check your phone and enter your M-Pesa PIN to complete payment.</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.5rem;">Order Total: <strong id="promptAmount"></strong></div>
+            </div>
+            <div id="mpesaActions">
+              <div style="display:flex;gap:1rem;margin-top:1rem;">
+                <button class="btn btn-outline" onclick="goToStep(2)">← Back</button>
+                <button class="btn btn-green btn-full" onclick="initiateMpesa()">Send M-Pesa Prompt →</button>
+              </div>
+            </div>
+          </div>
+          <div id="orderSummaryWrap3"></div>
+        </div>
+      </div>
+
+      <!-- Step 4: Success -->
+      <div id="cartStep4" style="display:none;">
+        <div class="payment-success">
+          <div class="success-icon">✅</div>
+          <h2 style="font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:0.75rem;">Payment Successful!</h2>
+          <p style="color:var(--text-muted);max-width:420px;margin:0 auto 0.5rem;">Your M-Pesa payment was confirmed. Your order has been placed and the artisan has been notified.</p>
+          <div style="background:var(--cream-dark);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;max-width:340px;margin:1.5rem auto;text-align:left;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;font-size:0.875rem;"><span style="color:var(--text-muted);">Order ID</span><strong>#ORD-2049</strong></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;font-size:0.875rem;"><span style="color:var(--text-muted);">M-Pesa Ref</span><strong>QHJ7X2M4K1</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:0.875rem;"><span style="color:var(--text-muted);">Delivery</span><strong>3–5 business days</strong></div>
+          </div>
+          <div style="display:flex;gap:1rem;justify-content:center;">
+            <button class="btn btn-primary" onclick="resetCart(); showPage('home')">Continue Shopping</button>
+            <button class="btn btn-outline" onclick="resetCart(); showPage('home')">Track Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ===================== DATA =====================
+const products = [
+  { id:1, name:'Maasai Warrior Necklace', artisan:'Mama Naeku', region:'Narok County', category:'Maasai', material:'Glass beads, copper wire', price:2800, rating:4.9, reviews:34, emoji:'💎', bg:'#FDE8E8', desc:'Handcrafted over 3 weeks using traditional Maasai beading techniques passed down through generations.', story:'Red symbolises warrior bravery; blue, the sky and God; white, peace and purity.', tags:['Jewellery','Necklace','Handmade'] },
+  { id:2, name:'Soapstone Lion Carving', artisan:'Mama Kerubo', region:'Kisii County', category:'Soapstone', material:'Kisii soapstone', price:3200, rating:4.8, reviews:28, emoji:'🗿', bg:'#E8F5EA', desc:'Sculpted from premium Kisii soapstone, each lion takes 5–7 days to complete by hand.', story:'The lion is a symbol of Kenyan strength and pride. Carved using tools unchanged for 200 years.', tags:['Carving','Sculpture','Soapstone'] },
+  { id:3, name:'Kiondo Sisal Basket', artisan:'Mama Kadzo', region:'Kwale County', category:'Sisal', material:'Natural sisal fibre, leather handles', price:1950, rating:4.7, reviews:41, emoji:'🧺', bg:'#F5F0DC', desc:'Hand-woven from natural sisal using traditional coastal techniques. Perfect for shopping or décor.', story:'Kiondo baskets have been a coastal tradition for centuries, woven by women during community gatherings.', tags:['Basket','Weaving','Sisal'] },
+  { id:4, name:'Beaded Maasai Bracelet Set', artisan:'Mama Naeku', region:'Narok County', category:'Maasai', material:'Glass beads, elastic thread', price:850, rating:5.0, reviews:67, emoji:'🔴', bg:'#FDE8E8', desc:'Set of 3 bracelets in traditional Maasai red, white, and blue. Elastic band fits all wrists.', story:'Worn at ceremonies, these colours represent a Maasai woman\'s marital status and blessings.', tags:['Bracelet','Jewellery','Set'] },
+  { id:5, name:'Elephant Family Sculpture', artisan:'Mzee Onyango', region:'Kisii County', category:'Soapstone', material:'Kisii soapstone, natural dye', price:5500, rating:4.9, reviews:19, emoji:'🐘', bg:'#E8F5EA', desc:'A family of three elephants carved from a single soapstone block. Each is unique.', story:'Elephants represent family bonds and memory in many Kenyan cultures. A cherished gift.', tags:['Sculpture','Family','Soapstone'] },
+  { id:6, name:'Coastal Market Bag', artisan:'Mama Kadzo', region:'Kwale County', category:'Sisal', material:'Sisal, natural dye, leather', price:2200, rating:4.6, reviews:23, emoji:'🛍️', bg:'#F5F0DC', desc:'Large market bag woven in geometric coastal patterns. Reinforced leather base and handles.', story:'The geometric patterns represent the coral reef patterns of Kenya\'s coastline.', tags:['Bag','Coastal','Weaving'] },
+  { id:7, name:'Maasai Earring Set', artisan:'Mama Naeku', region:'Narok County', category:'Maasai', material:'Glass beads, brass wire', price:650, rating:4.8, reviews:52, emoji:'🟡', bg:'#FDE8E8', desc:'Traditional Maasai drop earrings handcrafted with vibrant glass beads and brass wire.', story:'Long earrings are a Maasai beauty tradition representing elegance and social status.', tags:['Earrings','Jewellery','Gold'] },
+  { id:8, name:'Soapstone Giraffe Pair', artisan:'Mama Kerubo', region:'Kisii County', category:'Soapstone', material:'Kisii soapstone, paint', price:2750, rating:4.7, reviews:31, emoji:'🦒', bg:'#E8F5EA', desc:'A beautifully detailed pair of giraffes in polished soapstone. Hand-painted spots.', story:'The giraffe is Kenya\'s tallest and most graceful symbol — carved to bring long-lasting peace.', tags:['Giraffe','Pair','Decorative'] },
+];
+
+let cart = [];
+let activeCategory = null;
+
+// ===================== PAGE NAVIGATION =====================
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 'home') renderFeatured();
+  if (id === 'products') renderProducts();
+  if (id === 'cart') renderCart();
+}
+
+function setActive(el) {
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ===================== FEATURED =====================
+function renderFeatured() {
+  const grid = document.getElementById('featuredGrid');
+  if (!grid) return;
+  grid.innerHTML = products.slice(0, 4).map(p => productCard(p)).join('');
+}
+
+function productCard(p) {
+  return `<div class="card product-card" onclick="openDetail(${p.id})">
+    <div class="product-img" style="background:${p.bg};">${p.emoji}</div>
+    <div class="product-body">
+      <div class="product-artisan">${p.artisan} · ${p.region.split(' ')[0]}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-rating"><span class="stars">${'★'.repeat(Math.floor(p.rating))}</span> ${p.rating} (${p.reviews})</div>
+      <div class="product-desc">${p.desc.substring(0,80)}...</div>
+      <div class="product-footer">
+        <div class="product-price">Ksh ${p.price.toLocaleString()} <span>/ piece</span></div>
+        <button class="add-cart-btn" onclick="event.stopPropagation();addToCart(${p.id})">+</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ===================== PRODUCTS / FILTERS =====================
+function renderProducts(filtered) {
+  const list = filtered || products;
+  const grid = document.getElementById('productsGrid');
+  const count = document.getElementById('resultsCount');
+  if (!grid) return;
+  grid.innerHTML = list.map(p => productCard(p)).join('');
+  if (count) count.textContent = list.length + ' products found';
+  if (activeCategory) {
+    const cb = { 'Maasai': 'f-maasai', 'Soapstone': 'f-soapstone', 'Sisal': 'f-sisal' }[activeCategory];
+    const el = document.getElementById(cb);
+    if (el) { el.checked = true; activeCategory = null; }
+  }
+}
+
+function filterByCategory(cat) { activeCategory = cat; }
+
+function applyFilters() {
+  const search = (document.getElementById('searchInput')?.value || '').toLowerCase();
+  const maasai = document.getElementById('f-maasai')?.checked;
+  const soapstone = document.getElementById('f-soapstone')?.checked;
+  const sisal = document.getElementById('f-sisal')?.checked;
+  const narok = document.getElementById('f-narok')?.checked;
+  const kisii = document.getElementById('f-kisii')?.checked;
+  const kwale = document.getElementById('f-kwale')?.checked;
+  const minPrice = parseFloat(document.getElementById('priceMin')?.value) || 0;
+  const maxPrice = parseFloat(document.getElementById('priceMax')?.value) || Infinity;
+  const sort = document.getElementById('sortSelect')?.value;
+  const ratingEl = document.querySelector('input[name="rating"]:checked');
+  const minRating = ratingEl ? parseFloat(ratingEl.value) : 0;
+  const catActive = maasai || soapstone || sisal;
+  const regActive = narok || kisii || kwale;
+
+  let list = products.filter(p => {
+    if (search && !p.name.toLowerCase().includes(search) && !p.artisan.toLowerCase().includes(search) && !p.material.toLowerCase().includes(search)) return false;
+    if (catActive) {
+      if (maasai && p.category === 'Maasai') {}
+      else if (soapstone && p.category === 'Soapstone') {}
+      else if (sisal && p.category === 'Sisal') {}
+      else return false;
+    }
+    if (regActive) {
+      if (narok && p.region === 'Narok County') {}
+      else if (kisii && p.region === 'Kisii County') {}
+      else if (kwale && p.region === 'Kwale County') {}
+      else return false;
+    }
+    if (p.price < minPrice || p.price > maxPrice) return false;
+    if (p.rating < minRating) return false;
+    return true;
+  });
+
+  if (sort === 'price-asc') list.sort((a,b) => a.price - b.price);
+  else if (sort === 'price-desc') list.sort((a,b) => b.price - a.price);
+  else if (sort === 'rating') list.sort((a,b) => b.rating - a.rating);
+
+  renderProducts(list);
+}
+
+function clearFilters() {
+  ['f-maasai','f-soapstone','f-sisal','f-narok','f-kisii','f-kwale'].forEach(id => { const el = document.getElementById(id); if(el) el.checked = false; });
+  document.querySelectorAll('input[name="rating"]').forEach(el => el.checked = false);
+  const pi = document.getElementById('priceMin'); if(pi) pi.value = '';
+  const pa = document.getElementById('priceMax'); if(pa) pa.value = '';
+  const si = document.getElementById('searchInput'); if(si) si.value = '';
+  applyFilters();
+}
+
+// ===================== PRODUCT DETAIL =====================
+function openDetail(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  const html = `
+    <div class="detail-gallery">
+      <div class="detail-main-img" style="background:${p.bg};">${p.emoji}</div>
+      <div class="detail-thumbnails">
+        <div class="detail-thumb active" style="background:${p.bg};">${p.emoji}</div>
+        <div class="detail-thumb" style="background:${p.bg};opacity:0.6;">${p.emoji}</div>
+        <div class="detail-thumb" style="background:${p.bg};opacity:0.4;">${p.emoji}</div>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">${p.tags.map(t => `<span class="tag tag-gold">${t}</span>`).join('')}</div>
+      <div class="product-artisan" style="font-size:0.8rem;">${p.artisan} · ${p.region}</div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin:0.5rem 0 0.75rem;line-height:1.2;">${p.name}</h1>
+      <div class="product-rating"><span class="stars">${'★'.repeat(Math.floor(p.rating))}</span> <strong>${p.rating}</strong> · ${p.reviews} reviews</div>
+
+      <div class="detail-price-block">
+        <div class="detail-price">Ksh ${p.price.toLocaleString()}</div>
+        <div class="detail-price-note">Price includes direct artisan payment via M-Pesa</div>
+        <div class="detail-actions">
+          <div class="quantity-control">
+            <button class="qty-btn" onclick="changeQty(-1)">−</button>
+            <input type="text" class="qty-val" id="qtyVal" value="1" readonly>
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+          <button class="btn btn-primary" onclick="addToCart(${p.id}); notify('Added to cart!')">Add to Cart</button>
+          <button class="btn btn-dark" onclick="addToCart(${p.id}); showPage('cart')">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="detail-artisan-card">
+        <div class="artisan-avatar">${p.artisan.split(' ').map(w=>w[0]).join('').substring(0,2)}</div>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;">${p.artisan}</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);">${p.region} · Verified Artisan</div>
+          <div style="font-size:0.75rem;color:var(--green);margin-top:0.15rem;">✓ Receives 95% of this sale</div>
+        </div>
+      </div>
+
+      <div style="margin:1.75rem 0;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:0.75rem;">About This Piece</h3>
+        <p style="color:var(--text-secondary);line-height:1.75;font-size:0.9rem;">${p.desc}</p>
+      </div>
+
+      <div style="background:rgba(201,168,76,0.07);border-left:3px solid var(--gold);padding:1rem 1.25rem;border-radius:0 var(--radius) var(--radius) 0;margin-bottom:1.75rem;">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Cultural Story</div>
+        <p style="font-style:italic;color:var(--text-secondary);font-size:0.875rem;line-height:1.7;">"${p.story}"</p>
+      </div>
+
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:0.75rem;">Specifications</h3>
+        <table class="spec-table">
+          <tr><td>Material</td><td>${p.material}</td></tr>
+          <tr><td>Region</td><td>${p.region}</td></tr>
+          <tr><td>Category</td><td>${p.category}</td></tr>
+          <tr><td>Artisan</td><td>${p.artisan}</td></tr>
+          <tr><td>Payment</td><td>M-Pesa STK Push</td></tr>
+          <tr><td>Delivery</td><td>3–7 business days</td></tr>
+        </table>
+      </div>
+    </div>
+  `;
+  document.getElementById('detailContent').innerHTML = html;
+  showPage('detail');
+}
+
+let qty = 1;
+function changeQty(d) {
+  qty = Math.max(1, qty + d);
+  const el = document.getElementById('qtyVal');
+  if (el) el.value = qty;
+}
+
+// ===================== CART =====================
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  const existing = cart.find(c => c.id === id);
+  if (existing) existing.qty++;
+  else cart.push({ ...p, qty: 1 });
+  updateCartBadge();
+  notify('Added: ' + p.name);
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(c => c.id !== id);
+  updateCartBadge();
+  renderCart();
+}
+
+function updateCartQty(id, delta) {
+  const item = cart.find(c => c.id === id);
+  if (!item) return;
+  item.qty = Math.max(1, item.qty + delta);
+  renderCart();
+}
+
+function updateCartBadge() {
+  const total = cart.reduce((a, c) => a + c.qty, 0);
+  document.getElementById('cartBadge').textContent = total;
+}
+
+function cartTotal() {
+  return cart.reduce((a, c) => a + c.price * c.qty, 0);
+}
+
+function summaryHTML() {
+  const sub = cartTotal();
+  const delivery = sub > 0 ? 200 : 0;
+  const total = sub + delivery;
+  return `<div class="order-summary-card">
+    <div class="summary-title">Order Summary</div>
+    ${cart.map(c => `<div class="summary-line"><span>${c.name} × ${c.qty}</span><span>Ksh ${(c.price * c.qty).toLocaleString()}</span></div>`).join('')}
+    <div class="divider"></div>
+    <div class="summary-line"><span style="color:var(--text-muted)">Subtotal</span><span>Ksh ${sub.toLocaleString()}</span></div>
+    <div class="summary-line"><span style="color:var(--text-muted)">Delivery</span><span>Ksh ${delivery}</span></div>
+    <div class="summary-line total"><span>Total</span><span style="color:var(--gold);">Ksh ${total.toLocaleString()}</span></div>
+    <div class="mpesa-section" style="margin-top:1rem;">
+      <div class="mpesa-logo" style="font-size:1.1rem;">M-PESA</div>
+      <div class="mpesa-sub">Accepted payment method</div>
+    </div>
+  </div>`;
+}
+
+function renderCart() {
+  const empty = document.getElementById('cartEmptyMsg');
+  const content = document.getElementById('cartContent');
+  if (cart.length === 0) {
+    if (empty) empty.style.display = 'block';
+    if (content) content.style.display = 'none';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+  if (content) content.style.display = 'block';
+  const itemsList = document.getElementById('cartItemsList');
+  if (itemsList) {
+    itemsList.innerHTML = cart.map(c => `
+      <div class="cart-item">
+        <div class="cart-item-img" style="background:${c.bg};">${c.emoji}</div>
+        <div class="cart-item-body">
+          <div class="cart-item-artisan">${c.artisan} · ${c.region}</div>
+          <div class="cart-item-name">${c.name}</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);">${c.material}</div>
+          <div class="cart-item-footer">
+            <div class="quantity-control">
+              <button class="qty-btn" onclick="updateCartQty(${c.id},-1)">−</button>
+              <input type="text" class="qty-val" value="${c.qty}" readonly style="width:36px;">
+              <button class="qty-btn" onclick="updateCartQty(${c.id},1)">+</button>
+            </div>
+            <div class="cart-item-price">Ksh ${(c.price * c.qty).toLocaleString()}</div>
+            <button onclick="removeFromCart(${c.id})" style="background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:0.8rem;padding:0.3rem 0.6rem;border-radius:var(--radius);transition:color 0.2s;" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--text-muted)'">Remove</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    itemsList.innerHTML += `<button class="btn btn-primary btn-full" style="margin-top:0.5rem;" onclick="goToStep(2)">Proceed to Checkout →</button>`;
+  }
+  ['orderSummaryWrap','orderSummaryWrap2','orderSummaryWrap3'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = summaryHTML();
+  });
+}
+
+let currentStep = 1;
+function goToStep(n) {
+  [1,2,3,4].forEach(i => {
+    const el = document.getElementById('cartStep'+i);
+    if (el) el.style.display = i === n ? 'block' : 'none';
+  });
+  updateStepUI(n);
+  currentStep = n;
+  if (n === 2 || n === 3) {
+    ['orderSummaryWrap2','orderSummaryWrap3'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = summaryHTML();
+    });
+  }
+}
+
+function updateStepUI(n) {
+  const circles = [null,'st1','st2','st3','st4'];
+  const lines = [null,'sl1','sl2','sl3'];
+  for (let i = 1; i <= 4; i++) {
+    const c = document.getElementById(circles[i]);
+    if (!c) continue;
+    c.className = 'step-circle ' + (i < n ? 'done' : i === n ? 'active' : 'pending');
+  }
+  for (let i = 1; i <= 3; i++) {
+    const l = document.getElementById(lines[i]);
+    if (!l) continue;
+    l.className = 'step-line ' + (i < n ? 'done' : '');
+  }
+}
+
+function initiateMpesa() {
+  const phone = document.getElementById('mpesa-phone')?.value;
+  if (!phone) { notify('Please enter your M-Pesa number'); return; }
+  document.getElementById('mpesaActions').style.display = 'none';
+  document.getElementById('mpesaPromptArea').style.display = 'block';
+  const total = cartTotal() + 200;
+  const promptAmt = document.getElementById('promptAmount');
+  if (promptAmt) promptAmt.textContent = 'Ksh ' + total.toLocaleString();
+  setTimeout(() => { goToStep(4); cart = []; updateCartBadge(); }, 4000);
+}
+
+function resetCart() {
+  cart = [];
+  updateCartBadge();
+  goToStep(1);
+  document.getElementById('mpesaPromptArea').style.display = 'none';
+  document.getElementById('mpesaActions').style.display = 'block';
+}
+
+// ===================== DASHBOARD =====================
+function showDashTab(tab, el) {
+  document.querySelectorAll('[id^="tab-"]').forEach(t => t.style.display = 'none');
+  const target = document.getElementById('tab-' + tab);
+  if (target) target.style.display = 'block';
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+  if (el) el.classList.add('active');
+}
+
+function submitProduct() {
+  const title = document.getElementById('up-title')?.value;
+  const cat = document.getElementById('up-cat')?.value;
+  const price = document.getElementById('up-price')?.value;
+  if (!title || !cat || !price) { notify('Please fill all required fields'); return; }
+  notify('Product submitted for review! You\'ll be notified within 24 hours.');
+  setTimeout(() => showDashTab('products-dash', null), 1500);
+}
+
+// ===================== NOTIFY =====================
+function notify(msg) {
+  const el = document.getElementById('notification');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+// ===================== INIT =====================
+renderFeatured();
+renderProducts();
+</script>
+</body>
+</html>
