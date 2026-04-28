@@ -1,5 +1,7 @@
-# Sanaa Ya Kenya — E-Commerce Platform
-### Development of an E-Commerce Platform for Promoting and Selling Authentic Kenyan Handcrafted Ornaments with M-Pesa Integration
+# Sanaa Ya Kenya
+
+A demo e-commerce platform for authentic Kenyan handcrafted ornaments, built with PHP and MySQL and integrated with Safaricom M-Pesa for payments.
+
 **Maseno University · BSc Mathematics & Computer Science · 2026**
 
 ---
