@@ -111,7 +111,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['initiate_mpesa'])) {
         redirect(APP_URL . '/pages/payment-pending.php?order=' . $orderId);
 
     } catch (Exception $e) {
-        $pdo->rollBack();
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
         $errors['mpesa'] = 'Order creation failed. Please try again.';
     }
 }

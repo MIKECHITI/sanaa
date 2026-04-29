@@ -51,7 +51,9 @@ class Auth {
             return ['success' => true, 'user_id' => $userId];
 
         } catch (PDOException $e) {
-            $pdo->rollBack();
+            if (isset($pdo) && $pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
             if ($e->getCode() === '23000') {
                 return ['success' => false, 'errors' => ['email' => 'Email address already registered.']];
             }

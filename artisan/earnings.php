@@ -16,8 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['withdraw'])) {
     $amount = cleanFloat($_POST['amount'] ?? 0);
     $phone  = clean($_POST['mpesa_number'] ?? $artisan['mpesa_number']);
 
-    $available = (float) db()->prepare("SELECT COALESCE(SUM(net_amount),0) FROM artisan_earnings WHERE artisan_id = ? AND status = 'available'")->execute([$aid]) ? db()->prepare("SELECT COALESCE(SUM(net_amount),0) AS bal FROM artisan_earnings WHERE artisan_id = ? AND status = 'available'")->execute([$aid]) : 0;
-    // Re-query properly
     $balSt = db()->prepare("SELECT COALESCE(SUM(net_amount),0) AS bal FROM artisan_earnings WHERE artisan_id = ? AND status = 'available'");
     $balSt->execute([$aid]);
     $available = (float)$balSt->fetch()['bal'];

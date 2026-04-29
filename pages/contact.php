@@ -160,13 +160,16 @@ include __DIR__ . '/../includes/header.php';
   // Submit to Formspree after successful database save
   fetch('https://formspree.io/f/xgopaypr', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name: '<?= e($name) ?>',
-      email: '<?= e($email) ?>',
-      subject: '<?= e($subject) ?>',
-      message: '<?= e($message) ?>'
-    })
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(<?= json_encode([
+      'name' => $name,
+      'email' => $email,
+      'subject' => $subject,
+      'message' => $message,
+    ], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) ?>)
   }).catch(console.error);
 </script>
 <?php endif; ?>
