@@ -152,7 +152,7 @@ Visit: `http://localhost/sanaa`
 | User registration/login  | PHP sessions + bcrypt password hashing           |
 | Product catalogue        | Dynamic filters: category, region, price, rating |
 | M-Pesa STK Push          | Safaricom Daraja API via cURL                    |
-| Payment callback         | `api/mpesa-callback.php` → updates order status  |
+| Payment callback         | `api/mpesa-status.php` → updates order status  |
 | Artisan dashboard        | Earnings, orders, product management             |
 | Admin panel              | Product approval, user management, order tracking|
 | CSRF protection          | Token-per-session validation on all POST forms   |

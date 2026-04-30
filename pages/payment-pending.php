@@ -107,7 +107,7 @@ function poll() {
         document.getElementById('statusMsg').textContent = 'Timed out. Please check your order status or retry.';
         return;
     }
-    fetch('<?= APP_URL ?>/api/mpesa-status.php?order=' + orderId)
+    fetch(window.APP_URL + '/api/mpesa-status.php?order=' + orderId)
         .then(r => r.json())
         .then(data => {
             if (data.status === 'completed') {

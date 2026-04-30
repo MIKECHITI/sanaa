@@ -49,8 +49,6 @@
   </div>
 </footer>
 
-<script src="<?= APP_URL ?>/assets/js/jquery.min.js"></script>
-<script src="<?= APP_URL ?>/assets/js/bootstrap.bundle.min.js"></script>
 <script src="<?= APP_URL ?>/assets/js/custom.js"></script>
 </body>
 </html>
